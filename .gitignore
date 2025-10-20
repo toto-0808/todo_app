@@ -362,3 +362,6 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /todo_app/Web.config
+/todo_app/Views/Web.config
+/todo_app/Web.Debug.config
+/todo_app/Web.Release.config
