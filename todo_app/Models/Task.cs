@@ -1,0 +1,54 @@
+﻿using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
+namespace todo_app.Models
+{
+    /// <summary>
+    /// タスク
+    /// </summary>
+    public class Task
+    {
+        /// <summary>
+        /// ID
+        /// </summary>
+        public long Id { get; set; }
+
+        /// <summary>
+        /// グループ名
+        /// </summary>
+        [DisplayName("タスクグループ名")]
+        public String GroupName { get; set; }
+
+        /// <summary>
+        /// 概要
+        /// </summary>
+        [DisplayName("概要")]
+        public string Title { get; set; }
+
+        /// <summary>
+        /// 詳細
+        /// </summary>
+        [DisplayName("詳細")]
+        public string Detail { get; set; }
+
+        /// <summary>
+        /// 期限日
+        /// </summary>
+        [DisplayName("期限日")]
+        [DataType(DataType.Date)]
+        public DateTime DueDate { get; set; }
+
+        /// <summary>
+        /// 着手フラグ
+        /// </summary>
+        [DisplayName("着手したか？")]
+        public bool IsStart { get; set; }
+
+        /// <summary>
+        /// 完了フラグ
+        /// </summary>
+        [DisplayName("完了したか？")]
+        public bool IsCompleted { get; set; }
+    }
+}
