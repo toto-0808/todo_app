@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -17,8 +18,8 @@ namespace todo_app.Models
         /// <summary>
         /// グループ名
         /// </summary>
-        [DisplayName("タスクグループ名")]
-        public String GroupName { get; set; }
+        [DisplayName("タスクグループ")]
+        public virtual TaskGroup Group { get; set; }
 
         /// <summary>
         /// 概要

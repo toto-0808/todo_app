@@ -128,11 +128,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TaskGroupsController.cs" />
     <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Task.cs" />
+    <Compile Include="Models\TaskGroup.cs" />
     <Compile Include="Models\TodoAppContext.cs" />
     <Compile Include="Models\TodoAppInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -193,6 +195,11 @@
     <Content Include="Views\Tasks\Details.cshtml" />
     <Content Include="Views\Tasks\Edit.cshtml" />
     <Content Include="Views\Tasks\Index.cshtml" />
+    <Content Include="Views\TaskGroups\Create.cshtml" />
+    <Content Include="Views\TaskGroups\Delete.cshtml" />
+    <Content Include="Views\TaskGroups\Details.cshtml" />
+    <Content Include="Views\TaskGroups\Edit.cshtml" />
+    <Content Include="Views\TaskGroups\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

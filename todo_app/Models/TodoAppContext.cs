@@ -8,6 +8,14 @@ namespace todo_app.Models
 {
     public class TodoAppContext : DbContext
     {
+        /// <summary>
+        /// タスク
+        /// </summary>
         public DbSet<Task> Tasks { get; set; }
+
+        /// <summary>
+        /// タスクグループ
+        /// </summary>
+        public DbSet<TaskGroup> TaskGroups { get; set; }
     }
 }
