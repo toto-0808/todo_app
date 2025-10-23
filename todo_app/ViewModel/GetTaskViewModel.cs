@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.CompilerServices;
+using System.Web.Mvc;
+using todo_app.Models;
 
-namespace todo_app.Models
+namespace todo_app.ViewModel
 {
     /// <summary>
-    /// タスク
+    /// タスク作成用のViewModel
     /// </summary>
-    public class Task
+    public class GetTaskViewModel
     {
         /// <summary>
         /// ID
@@ -17,10 +18,10 @@ namespace todo_app.Models
         public long Id { get; set; }
 
         /// <summary>
-        /// グループ名
+        /// タスクグループID
         /// </summary>
-        [DisplayName("タスクグループ")]
-        public virtual TaskGroup Group { get; set; }
+        [DisplayName("タスクグループID")]
+        public int TaskGroupId { get; set; }
 
         /// <summary>
         /// 概要
@@ -52,5 +53,10 @@ namespace todo_app.Models
         /// </summary>
         [DisplayName("完了したか？")]
         public bool IsCompleted { get; set; }
+
+        /// <summary>
+        /// タスクグループ一覧
+        /// </summary>
+        public IEnumerable<SelectListItem> TaskGroupList { get; set; } = new List<SelectListItem>();
     }
 }

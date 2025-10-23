@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using todo_app.Models;
+using todo_app.ViewModel;
 
 namespace todo_app.Controllers
 {
@@ -38,7 +39,12 @@ namespace todo_app.Controllers
         // GET: Tasks/Create
         public ActionResult Create()
         {
-            return View();
+            return View(new GetTaskViewModel {
+                TaskGroupList = db.TaskGroups.Select(g => new SelectListItem {
+                    Value = g.Id.ToString(),
+                    Text = g.Name
+                }).ToList()
+            });
         }
 
         // POST: Tasks/Create
@@ -46,16 +52,27 @@ namespace todo_app.Controllers
         // 詳細については、https://go.microsoft.com/fwlink/?LinkId=317598 をご覧ください。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,GroupName,Title,Detail,DueDate,IsStart,IsCompleted")] Task task)
+        public ActionResult Create(GetTaskViewModel vm)
         {
             if (ModelState.IsValid)
             {
+                var task = new Task
+                {
+                    Group = db.TaskGroups.Find(vm.TaskGroupId),
+                    Title = vm.Title,
+                    Detail = vm.Detail,
+                    DueDate = vm.DueDate,
+                    IsStart = vm.IsStart,
+                    IsCompleted = vm.IsCompleted
+                };
+
                 db.Tasks.Add(task);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(task);
+            // Todo: バグ - 追加、編集に失敗したときにグループリストが無くなる
+            return View(vm);
         }
 
         // GET: Tasks/Edit/5
@@ -70,7 +87,22 @@ namespace todo_app.Controllers
             {
                 return HttpNotFound();
             }
-            return View(task);
+
+            // Todo: バグ - 編集時に期限日が画面側で表示できない
+            return View(new GetTaskViewModel
+            {
+                Id = task.Id,
+                TaskGroupId = task.Group == null ? 0 : task.Group.Id,
+                Title = task.Title,
+                Detail = task.Detail,
+                DueDate = task.DueDate,
+                IsStart = task.IsStart,
+                TaskGroupList = db.TaskGroups.Select(g => new SelectListItem
+                {
+                    Value = g.Id.ToString(),
+                    Text = g.Name
+                }).ToList()
+            });
         }
 
         // POST: Tasks/Edit/5
@@ -78,15 +110,29 @@ namespace todo_app.Controllers
         // 詳細については、https://go.microsoft.com/fwlink/?LinkId=317598 をご覧ください。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,GroupName,Title,Detail,DueDate,IsStart,IsCompleted")] Task task)
+        public ActionResult Edit([Bind(Include = "Id,Group,Title,Detail,DueDate,IsStart,IsCompleted")] GetTaskViewModel vm)
         {
             if (ModelState.IsValid)
             {
+                var task = new Task
+                {
+                    Id = vm.Id,
+                    // Todo: バグ - 編集時にグループが更新できない
+                    Group = db.TaskGroups.Find(vm.TaskGroupId),
+                    Title = vm.Title,
+                    Detail = vm.Detail,
+                    DueDate = vm.DueDate,
+                    IsStart = vm.IsStart,
+                    IsCompleted = vm.IsCompleted
+                };
+
                 db.Entry(task).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(task);
+
+            // Todo: バグ - 追加、編集に失敗したときにグループリストが無くなる
+            return View(vm);
         }
 
         // GET: Tasks/Delete/5
