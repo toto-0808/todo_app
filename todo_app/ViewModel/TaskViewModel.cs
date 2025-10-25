@@ -10,7 +10,7 @@ namespace todo_app.ViewModel
     /// <summary>
     /// タスク作成用のViewModel
     /// </summary>
-    public class GetTaskViewModel
+    public class TaskViewModel
     {
         /// <summary>
         /// ID
@@ -40,6 +40,7 @@ namespace todo_app.ViewModel
         /// </summary>
         [DisplayName("期限日")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DueDate { get; set; }
 
         /// <summary>

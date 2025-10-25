@@ -39,7 +39,7 @@ namespace todo_app.Controllers
         // GET: Tasks/Create
         public ActionResult Create()
         {
-            return View(new GetTaskViewModel {
+            return View(new TaskViewModel {
                 TaskGroupList = db.TaskGroups.Select(g => new SelectListItem {
                     Value = g.Id.ToString(),
                     Text = g.Name
@@ -52,7 +52,7 @@ namespace todo_app.Controllers
         // 詳細については、https://go.microsoft.com/fwlink/?LinkId=317598 をご覧ください。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(GetTaskViewModel vm)
+        public ActionResult Create(TaskViewModel vm)
         {
             if (ModelState.IsValid)
             {
@@ -92,8 +92,7 @@ namespace todo_app.Controllers
                 return HttpNotFound();
             }
 
-            // Todo: バグ - 編集時に期限日が画面側で表示できない
-            return View(new GetTaskViewModel
+            return View(new TaskViewModel
             {
                 Id = task.Id,
                 TaskGroupId = task.Group == null ? 0 : task.Group.Id,
@@ -114,7 +113,7 @@ namespace todo_app.Controllers
         // 詳細については、https://go.microsoft.com/fwlink/?LinkId=317598 をご覧ください。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Group,Title,Detail,DueDate,IsStart,IsCompleted")] GetTaskViewModel vm)
+        public ActionResult Edit([Bind(Include = "Id,Group,Title,Detail,DueDate,IsStart,IsCompleted")] TaskViewModel vm)
         {
             if (ModelState.IsValid)
             {
