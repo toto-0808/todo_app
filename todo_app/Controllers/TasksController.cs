@@ -71,7 +71,11 @@ namespace todo_app.Controllers
                 return RedirectToAction("Index");
             }
 
-            // Todo: バグ - 追加、編集に失敗したときにグループリストが無くなる
+            vm.TaskGroupList = db.TaskGroups.Select(g => new SelectListItem
+            {
+                Value = g.Id.ToString(),
+                Text = g.Name
+            }).ToList();
             return View(vm);
         }
 
@@ -131,7 +135,11 @@ namespace todo_app.Controllers
                 return RedirectToAction("Index");
             }
 
-            // Todo: バグ - 追加、編集に失敗したときにグループリストが無くなる
+            vm.TaskGroupList = db.TaskGroups.Select(g => new SelectListItem
+            {
+                Value = g.Id.ToString(),
+                Text = g.Name
+            }).ToList();
             return View(vm);
         }
 
