@@ -6,6 +6,9 @@ using System.Web;
 
 namespace todo_app.Models
 {
+    /// <summary>
+    /// TodoAppDBコンテキスト
+    /// </summary>
     public class TodoAppContext : DbContext
     {
         /// <summary>

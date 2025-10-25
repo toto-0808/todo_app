@@ -6,8 +6,15 @@ using System.Web;
 
 namespace todo_app.Models
 {
+    /// <summary>
+    /// DB初期化クラス
+    /// </summary>
     public class TodoAppInitializer : DropCreateDatabaseIfModelChanges<TodoAppContext>
     {
+        /// <summary>
+        /// 初期化します。
+        /// </summary>
+        /// <param name="context">DBコンテキスト</param>
         protected override void Seed(TodoAppContext context)
         {
             var taskGroups = new List<TaskGroup>

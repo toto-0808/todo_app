@@ -3,9 +3,16 @@ using System.Web.Optimization;
 
 namespace todo_app
 {
+    /// <summary>
+    /// バンドルの登録クラス
+    /// </summary>
     public class BundleConfig
     {
         // バンドルの詳細については、https://go.microsoft.com/fwlink/?LinkId=301862 を参照してください
+        /// <summary>
+        /// バンドルを登録します。
+        /// </summary>
+        /// <param name="bundles">バンドルコレクション</param>
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(

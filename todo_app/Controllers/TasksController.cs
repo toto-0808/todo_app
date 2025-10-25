@@ -11,17 +11,30 @@ using todo_app.ViewModel;
 
 namespace todo_app.Controllers
 {
+    /// <summary>
+    /// タスクコントローラー
+    /// </summary>
     public class TasksController : Controller
     {
+        /// <summary>
+        /// DBコンテキスト
+        /// </summary>
         private TodoAppContext db = new TodoAppContext();
 
-        // GET: Tasks
+        /// <summary>
+        /// 初期表示
+        /// </summary>
+        /// <returns>タスク一覧</returns>
         public ActionResult Index()
         {
             return View(db.Tasks.ToList());
         }
 
-        // GET: Tasks/Details/5
+        /// <summary>
+        /// タスクの詳細画面
+        /// </summary>
+        /// <param name="id">タスクID</param>
+        /// <returns>タスク</returns>
         public ActionResult Details(long? id)
         {
             if (id == null)
@@ -36,7 +49,10 @@ namespace todo_app.Controllers
             return View(task);
         }
 
-        // GET: Tasks/Create
+        /// <summary>
+        /// タスクの作成画面
+        /// </summary>
+        /// <returns>空のタスクとタスクグループ一覧</returns>
         public ActionResult Create()
         {
             return View(new TaskViewModel {
@@ -50,6 +66,11 @@ namespace todo_app.Controllers
         // POST: Tasks/Create
         // 過多ポスティング攻撃を防止するには、バインド先とする特定のプロパティを有効にしてください。
         // 詳細については、https://go.microsoft.com/fwlink/?LinkId=317598 をご覧ください。
+        /// <summary>
+        /// タスクを作成します。
+        /// </summary>
+        /// <param name="vm">追加するタスク</param>
+        /// <returns>成功：Index画面へのリダイレクト、失敗：ViewModel</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(TaskViewModel vm)
@@ -79,7 +100,11 @@ namespace todo_app.Controllers
             return View(vm);
         }
 
-        // GET: Tasks/Edit/5
+        /// <summary>
+        ///タスクの編集画面
+        /// </summary>
+        /// <param name="id">タスクID</param>
+        /// <returns>編集対象のタスクとタスクグループ一覧</returns>
         public ActionResult Edit(long? id)
         {
             if (id == null)
@@ -111,6 +136,11 @@ namespace todo_app.Controllers
         // POST: Tasks/Edit/5
         // 過多ポスティング攻撃を防止するには、バインド先とする特定のプロパティを有効にしてください。
         // 詳細については、https://go.microsoft.com/fwlink/?LinkId=317598 をご覧ください。
+        /// <summary>
+        /// タスクを更新します。
+        /// </summary>
+        /// <param name="vm">編集後のタスク</param>
+        /// <returns>成功：Index画面に遷移、失敗：ViewModel</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Group,Title,Detail,DueDate,IsStart,IsCompleted")] TaskViewModel vm)
@@ -142,7 +172,11 @@ namespace todo_app.Controllers
             return View(vm);
         }
 
-        // GET: Tasks/Delete/5
+        /// <summary>
+        /// タスクの削除確認画面
+        /// </summary>
+        /// <param name="id">削除対象のタスクID</param>
+        /// <returns>削除対象のタスク</returns>
         public ActionResult Delete(long? id)
         {
             if (id == null)
@@ -157,7 +191,11 @@ namespace todo_app.Controllers
             return View(task);
         }
 
-        // POST: Tasks/Delete/5
+        /// <summary>
+        /// タスクを削除します。
+        /// </summary>
+        /// <param name="id">削除対象のタスクID</param>
+        /// <returns>Index画面に遷移</returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
@@ -168,6 +206,10 @@ namespace todo_app.Controllers
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// DBコンテキストを破棄します。
+        /// </summary>
+        /// <param name="disposing">破棄するかどうか</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)

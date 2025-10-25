@@ -10,17 +10,30 @@ using todo_app.Models;
 
 namespace todo_app.Controllers
 {
+    /// <summary>
+    /// タスクグループコントローラー
+    /// </summary>
     public class TaskGroupsController : Controller
     {
+        /// <summary>
+        /// DBコンテキスト
+        /// </summary>
         private TodoAppContext db = new TodoAppContext();
 
-        // GET: TaskGroups
+        /// <summary>
+        /// Index画面
+        /// </summary>
+        /// <returns>タスクグループ一覧</returns>
         public ActionResult Index()
         {
             return View(db.TaskGroups.ToList());
         }
 
-        // GET: TaskGroups/Details/5
+        /// <summary>
+        /// タスクグループの詳細画面
+        /// </summary>
+        /// <param name="id">タスクグループID</param>
+        /// <returns>タスクグループ</returns>
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,7 +48,10 @@ namespace todo_app.Controllers
             return View(taskGroup);
         }
 
-        // GET: TaskGroups/Create
+        /// <summary>
+        /// タスクグループの作成画面
+        /// </summary>
+        /// <returns>なし</returns>
         public ActionResult Create()
         {
             return View();
@@ -44,6 +60,11 @@ namespace todo_app.Controllers
         // POST: TaskGroups/Create
         // 過多ポスティング攻撃を防止するには、バインド先とする特定のプロパティを有効にしてください。
         // 詳細については、https://go.microsoft.com/fwlink/?LinkId=317598 をご覧ください。
+        /// <summary>
+        /// タスクグループを作成します。
+        /// </summary>
+        /// <param name="taskGroup">作成するタスクグループ</param>
+        /// <returns>タスクグループ</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Color")] TaskGroup taskGroup)
@@ -59,6 +80,11 @@ namespace todo_app.Controllers
         }
 
         // GET: TaskGroups/Edit/5
+        /// <summary>
+        /// タスクグループの編集画面
+        /// </summary>
+        /// <param name="id">タスクグループID</param>
+        /// <returns>タスクグループ</returns>
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -76,6 +102,11 @@ namespace todo_app.Controllers
         // POST: TaskGroups/Edit/5
         // 過多ポスティング攻撃を防止するには、バインド先とする特定のプロパティを有効にしてください。
         // 詳細については、https://go.microsoft.com/fwlink/?LinkId=317598 をご覧ください。
+        /// <summary>
+        /// タスクグループを更新します。
+        /// </summary>
+        /// <param name="taskGroup">タスクグループ</param>
+        /// <returns>タスクグループ</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,Color")] TaskGroup taskGroup)
@@ -89,7 +120,11 @@ namespace todo_app.Controllers
             return View(taskGroup);
         }
 
-        // GET: TaskGroups/Delete/5
+        /// <summary>
+        /// タスクグループの削除確認画面
+        /// </summary>
+        /// <param name="id">タスクグループID</param>
+        /// <returns>タスクグループ</returns>
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +139,11 @@ namespace todo_app.Controllers
             return View(taskGroup);
         }
 
-        // POST: TaskGroups/Delete/5
+        /// <summary>
+        /// タスクグループを削除します。
+        /// </summary>
+        /// <param name="id">タスクグループID</param>
+        /// <returns>Index画面に遷移</returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -115,6 +154,10 @@ namespace todo_app.Controllers
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// DBコンテキストを破棄します。
+        /// </summary>
+        /// <param name="disposing">破棄するかどうか</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)

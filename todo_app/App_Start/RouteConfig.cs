@@ -7,8 +7,15 @@ using System.Web.Routing;
 
 namespace todo_app
 {
+    /// <summary>
+    /// ルーティング設定クラス
+    /// </summary>
     public class RouteConfig
     {
+        /// <summary>
+        /// ルートを登録します。
+        /// </summary>
+        /// <param name="routes">ルートコレクション</param>
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
