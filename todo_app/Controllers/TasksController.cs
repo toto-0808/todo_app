@@ -83,7 +83,7 @@ namespace todo_app.Controllers
                     Title = vm.Title,
                     Detail = vm.Detail,
                     DueDate = vm.DueDate,
-                    IsStart = vm.IsStart,
+                    IsStarted = vm.IsStart,
                     IsCompleted = vm.IsCompleted
                 };
 
@@ -124,7 +124,7 @@ namespace todo_app.Controllers
                 Title = task.Title,
                 Detail = task.Detail,
                 DueDate = task.DueDate,
-                IsStart = task.IsStart,
+                IsStart = task.IsStarted,
                 TaskGroupList = db.TaskGroups.Select(g => new SelectListItem
                 {
                     Value = g.Id.ToString(),
@@ -155,7 +155,7 @@ namespace todo_app.Controllers
                     Title = vm.Title,
                     Detail = vm.Detail,
                     DueDate = vm.DueDate,
-                    IsStart = vm.IsStart,
+                    IsStarted = vm.IsStart,
                     IsCompleted = vm.IsCompleted
                 };
 

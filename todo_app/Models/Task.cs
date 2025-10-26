@@ -45,7 +45,7 @@ namespace todo_app.Models
         /// 着手フラグ
         /// </summary>
         [DisplayName("着手したか？")]
-        public bool IsStart { get; set; }
+        public bool IsStarted { get; set; }
 
         /// <summary>
         /// 完了フラグ

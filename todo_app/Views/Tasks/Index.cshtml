@@ -16,6 +16,8 @@
 <table class="table">
     <tr>
         <th>
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Group.Name)
         </th>
         <th>
@@ -28,7 +30,7 @@
             @Html.DisplayNameFor(model => model.DueDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsStart)
+            @Html.DisplayNameFor(model => model.IsStarted)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.IsCompleted)
@@ -39,6 +41,14 @@
     @foreach (var item in Model)
     {
         <tr>
+            @if (item.Group != null)
+            {
+                <td style="color:@item.Group.Color.ToString().ToLower()">●</td>
+            }
+            else
+            {
+                <td></td>
+            }
             <td>
                 @Html.DisplayFor(modelItem => item.Group.Name)
             </td>
@@ -52,7 +62,7 @@
                 @Html.DisplayFor(modelItem => item.DueDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsStart)
+                @Html.DisplayFor(modelItem => item.IsStarted)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsCompleted)
