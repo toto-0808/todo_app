@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -160,6 +161,7 @@ namespace todo_app.Controllers
                 };
 
                 db.Entry(task).State = EntityState.Modified;
+                db.Tasks.AddOrUpdate(task);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

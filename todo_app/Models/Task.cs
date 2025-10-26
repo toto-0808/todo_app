@@ -23,6 +23,11 @@ namespace todo_app.Models
         public virtual TaskGroup Group { get; set; }
 
         /// <summary>
+        /// タスクグループ
+        /// </summary>
+        public long? TaskGroupId { get { return Group != null ? Group.Id : (long?)null; } }
+
+        /// <summary>
         /// 概要
         /// </summary>
         [DisplayName("概要")]
