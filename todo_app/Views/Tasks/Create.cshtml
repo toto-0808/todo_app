@@ -48,11 +48,11 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IsStart, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IsStarted, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.IsStart)
-                    @Html.ValidationMessageFor(model => model.IsStart, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.IsStarted)
+                    @Html.ValidationMessageFor(model => model.IsStarted, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>

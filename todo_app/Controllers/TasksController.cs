@@ -83,7 +83,7 @@ namespace todo_app.Controllers
                     Title = vm.Title,
                     Detail = vm.Detail,
                     DueDate = vm.DueDate,
-                    IsStarted = vm.IsStart,
+                    IsStarted = vm.IsStarted,
                     IsCompleted = vm.IsCompleted
                 };
 
@@ -124,7 +124,7 @@ namespace todo_app.Controllers
                 Title = task.Title,
                 Detail = task.Detail,
                 DueDate = task.DueDate,
-                IsStart = task.IsStarted,
+                IsStarted = task.IsStarted,
                 TaskGroupList = db.TaskGroups.Select(g => new SelectListItem
                 {
                     Value = g.Id.ToString(),
@@ -143,7 +143,7 @@ namespace todo_app.Controllers
         /// <returns>成功：Index画面に遷移、失敗：ViewModel</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Group,Title,Detail,DueDate,IsStart,IsCompleted")] TaskViewModel vm)
+        public ActionResult Edit(TaskViewModel vm)
         {
             if (ModelState.IsValid)
             {
@@ -155,7 +155,7 @@ namespace todo_app.Controllers
                     Title = vm.Title,
                     Detail = vm.Detail,
                     DueDate = vm.DueDate,
-                    IsStarted = vm.IsStart,
+                    IsStarted = vm.IsStarted,
                     IsCompleted = vm.IsCompleted
                 };
 
