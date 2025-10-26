@@ -41,7 +41,7 @@ namespace todo_app.ViewModel
         [DisplayName("期限日")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime DueDate { get; set; }
+        public DateTime DueDate { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
 
         /// <summary>
         /// 着手フラグ
