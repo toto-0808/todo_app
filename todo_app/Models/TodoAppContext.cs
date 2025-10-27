@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity;
 
 namespace todo_app.Models
 {
@@ -17,8 +13,8 @@ namespace todo_app.Models
         public DbSet<Task> Tasks { get; set; }
 
         /// <summary>
-        /// タスクグループ
+        /// タスクカテゴリ
         /// </summary>
-        public DbSet<TaskGroup> TaskGroups { get; set; }
+        public DbSet<TaskCategory> TaskCategories { get; set; }
     }
 }

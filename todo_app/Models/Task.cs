@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.CompilerServices;
 
 namespace todo_app.Models
 {
@@ -17,15 +15,15 @@ namespace todo_app.Models
         public long Id { get; set; }
 
         /// <summary>
-        /// グループ名
+        /// カテゴリ名
         /// </summary>
-        [DisplayName("タスクグループ")]
-        public virtual TaskGroup Group { get; set; }
+        [DisplayName("タスクカテゴリ")]
+        public virtual TaskCategory Category { get; set; }
 
         /// <summary>
-        /// タスクグループ
+        /// タスクカテゴリ
         /// </summary>
-        public long? TaskGroupId { get { return Group != null ? Group.Id : (long?)null; } }
+        public long? TaskCategoryId { get { return Category != null ? Category.Id : (long?)null; } }
 
         /// <summary>
         /// 概要

@@ -11,14 +11,14 @@
 </p>
 
 <p class="btn btn-outline-primary btn-md">
-    @Html.ActionLink("Check & Create New TaskGroup", "../TaskGroups/Index")
+    @Html.ActionLink("Check & Create New TaskCategory", "../TaskCategories/Index")
 </p>
 <table class="table">
     <tr>
         <th>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Group.Name)
+            @Html.DisplayNameFor(model => model.Category.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
@@ -41,16 +41,16 @@
     @foreach (var item in Model)
     {
         <tr>
-            @if (item.Group != null)
+            @if (item.Category != null)
             {
-                <td style="color:@item.Group.Color.ToString().ToLower()">●</td>
+                <td style="color:@item.Category.Color.ToString().ToLower()">●</td>
             }
             else
             {
                 <td></td>
             }
             <td>
-                @Html.DisplayFor(modelItem => item.Group.Name)
+                @Html.DisplayFor(modelItem => item.Category.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)

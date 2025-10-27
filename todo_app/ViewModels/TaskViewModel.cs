@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
-using todo_app.Models;
 
 namespace todo_app.ViewModels
 {
@@ -18,10 +17,9 @@ namespace todo_app.ViewModels
         public long Id { get; set; }
 
         /// <summary>
-        /// タスクグループID
+        /// タスクカテゴリID
         /// </summary>
-        [DisplayName("タスクグループID")]
-        public int TaskGroupId { get; set; }
+        public int TaskCategoryId { get; set; }
 
         /// <summary>
         /// 概要
@@ -56,8 +54,9 @@ namespace todo_app.ViewModels
         public bool IsCompleted { get; set; }
 
         /// <summary>
-        /// タスクグループ一覧
+        /// タスクカテゴリ一覧
         /// </summary>
-        public IEnumerable<SelectListItem> TaskGroupList { get; set; } = new List<SelectListItem>();
+        [DisplayName("カテゴリ")]
+        public IEnumerable<SelectListItem> TaskCategoryList { get; set; } = new List<SelectListItem>();
     }
 }

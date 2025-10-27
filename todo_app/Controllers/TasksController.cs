@@ -53,11 +53,11 @@ namespace todo_app.Controllers
         /// <summary>
         /// タスクの作成画面
         /// </summary>
-        /// <returns>空のタスクとタスクグループ一覧</returns>
+        /// <returns>空のタスクとタスクカテゴリ一覧</returns>
         public ActionResult Create()
         {
             return View(new TaskViewModel {
-                TaskGroupList = db.TaskGroups.Select(g => new SelectListItem {
+                TaskCategoryList = db.TaskCategories.Select(g => new SelectListItem {
                     Value = g.Id.ToString(),
                     Text = g.Name
                 }).ToList()
@@ -80,7 +80,7 @@ namespace todo_app.Controllers
             {
                 var task = new Task
                 {
-                    Group = db.TaskGroups.Find(vm.TaskGroupId),
+                    Category = db.TaskCategories.Find(vm.TaskCategoryId),
                     Title = vm.Title,
                     Detail = vm.Detail,
                     DueDate = vm.DueDate,
@@ -93,7 +93,7 @@ namespace todo_app.Controllers
                 return RedirectToAction("Index");
             }
 
-            vm.TaskGroupList = db.TaskGroups.Select(g => new SelectListItem
+            vm.TaskCategoryList = db.TaskCategories.Select(g => new SelectListItem
             {
                 Value = g.Id.ToString(),
                 Text = g.Name
@@ -105,7 +105,7 @@ namespace todo_app.Controllers
         ///タスクの編集画面
         /// </summary>
         /// <param name="id">タスクID</param>
-        /// <returns>編集対象のタスクとタスクグループ一覧</returns>
+        /// <returns>編集対象のタスクとタスクカテゴリ一覧</returns>
         public ActionResult Edit(long? id)
         {
             if (id == null)
@@ -121,12 +121,12 @@ namespace todo_app.Controllers
             return View(new TaskViewModel
             {
                 Id = task.Id,
-                TaskGroupId = task.Group == null ? 0 : task.Group.Id,
+                TaskCategoryId = task.Category == null ? 0 : task.Category.Id,
                 Title = task.Title,
                 Detail = task.Detail,
                 DueDate = task.DueDate,
                 IsStarted = task.IsStarted,
-                TaskGroupList = db.TaskGroups.Select(g => new SelectListItem
+                TaskCategoryList = db.TaskCategories.Select(g => new SelectListItem
                 {
                     Value = g.Id.ToString(),
                     Text = g.Name
@@ -151,8 +151,8 @@ namespace todo_app.Controllers
                 var task = new Task
                 {
                     Id = vm.Id,
-                    // Todo: バグ - 編集時にグループが更新できない
-                    Group = db.TaskGroups.Find(vm.TaskGroupId),
+                    // Todo: バグ - 編集時にカテゴリが更新できない
+                    Category = db.TaskCategories.Find(vm.TaskCategoryId),
                     Title = vm.Title,
                     Detail = vm.Detail,
                     DueDate = vm.DueDate,
@@ -166,7 +166,7 @@ namespace todo_app.Controllers
                 return RedirectToAction("Index");
             }
 
-            vm.TaskGroupList = db.TaskGroups.Select(g => new SelectListItem
+            vm.TaskCategoryList = db.TaskCategories.Select(g => new SelectListItem
             {
                 Value = g.Id.ToString(),
                 Text = g.Name

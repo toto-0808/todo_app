@@ -16,10 +16,10 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         
         <div class="form-group">
-            @Html.LabelFor(model => model.TaskGroupList, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.TaskCategoryList, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.TaskGroupId, Model.TaskGroupList, "選択してください", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.TaskGroupId, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.TaskCategoryId, Model.TaskCategoryList, "選択してください", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TaskCategoryId, "", new { @class = "text-danger" })
             </div>
         </div>
 

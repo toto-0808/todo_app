@@ -1,32 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Web;
 
 namespace todo_app.Models
 {
     /// <summary>
-    /// タスクグループ
+    /// タスクカテゴリ
     /// </summary>
-    public class TaskGroup
+    public class TaskCategory
     {
         /// <summary>
-        /// タスクグループID
+        /// タスクカテゴリID
         /// </summary>
         public int Id { get; set; }
 
         /// <summary>
-        /// グループ名
+        /// カテゴリ名
         /// </summary>
-        [DisplayName("グループ名")]
+        [DisplayName("カテゴリ名")]
         public string Name { get; set; }
 
         /// <summary>
         /// 色
         /// </summary>
-        [DisplayName("グループカラー")]
-        public TaskGroupColor Color { get; set; } = TaskGroupColor.Gray;
+        [DisplayName("カテゴリカラー")]
+        public TaskCategoryColor Color { get; set; } = TaskCategoryColor.Gray;
 
         /// <summary>
         /// タスク一覧
@@ -36,9 +33,9 @@ namespace todo_app.Models
     }
 
     /// <summary>
-    /// タスクグループの色
+    /// タスクカテゴリの色
     /// </summary>
-    public enum TaskGroupColor : byte
+    public enum TaskCategoryColor : byte
     {
         Gray = 0,
         Red = 1,
