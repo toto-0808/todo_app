@@ -148,20 +148,16 @@ namespace todo_app.Controllers
         {
             if (ModelState.IsValid)
             {
-                var task = new Task
-                {
-                    Id = vm.Id,
-                    // Todo: バグ - 編集時にカテゴリが更新できない
-                    Category = db.TaskCategories.Find(vm.TaskCategoryId),
-                    Title = vm.Title,
-                    Detail = vm.Detail,
-                    DueDate = vm.DueDate,
-                    IsStarted = vm.IsStarted,
-                    IsCompleted = vm.IsCompleted
-                };
+                // カテゴリを更新するためにデータを明示的に更新する
+                var updateTask = db.Tasks.Find(vm.Id);
+                updateTask.Category = db.TaskCategories.Find(vm.TaskCategoryId);
+                updateTask.Title = vm.Title;
+                updateTask.Detail = vm.Detail;
+                updateTask.DueDate = vm.DueDate;
+                updateTask.IsStarted = vm.IsStarted;
+                updateTask.IsCompleted = vm.IsCompleted;
 
-                db.Entry(task).State = EntityState.Modified;
-                db.Tasks.AddOrUpdate(task);
+                db.Tasks.AddOrUpdate(updateTask);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
