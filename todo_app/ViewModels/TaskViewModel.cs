@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using todo_app.Models;
 
-namespace todo_app.ViewModel
+namespace todo_app.ViewModels
 {
     /// <summary>
     /// タスク作成用のViewModel
