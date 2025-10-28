@@ -45,12 +45,14 @@ namespace todo_app.ViewModels
         /// <summary>
         /// 着手済みか
         /// </summary>
+        /// Toso:選択肢を「未着手」「着手済み」「指定なし」としたい
         [DisplayName("着手ステータス")]
         public bool? IsStarted { get; set; } = null;
 
         /// <summary>
         /// 完了済みか
         /// </summary>
+        /// Toso:選択肢を「未完了」「完了済み」「指定なし」としたい
         [DisplayName("完了ステータス")]
         public bool? IsCompleted { get; set; } = null;
 
