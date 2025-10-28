@@ -26,9 +26,75 @@ namespace todo_app.Controllers
         /// 初期表示
         /// </summary>
         /// <returns>タスク一覧</returns>
-        public ActionResult Index()
+        public ActionResult Index(SearchTaskViewModel searchTaskViewModel)
         {
-            return View(db.Tasks.ToList());
+            if(searchTaskViewModel == null)
+            {
+                return View(new SearchTaskViewModel
+                {
+                    TaskList = db.Tasks.ToList(),
+                    TaskCategoryList = db.TaskCategories.Select(g => new SelectListItem
+                    {
+                        Value = g.Id.ToString(),
+                        Text = g.Name
+                    }).ToList(),
+                });
+            }
+
+            searchTaskViewModel.TaskList = this.FilterTasks(searchTaskViewModel).ToList();
+            searchTaskViewModel.TaskCategoryList = db.TaskCategories.Select(g => new SelectListItem
+            {
+                Value = g.Id.ToString(),
+                Text = g.Name
+            }).ToList();
+
+            return View(searchTaskViewModel);
+        }
+
+        /// <summary>
+        /// タスクを検索します。
+        /// </summary>
+        /// <param name="searchTaskViewModel">タスク検索用のViewModel</param>
+        /// <returns>クエリ</returns>
+        private IQueryable<Task> FilterTasks(SearchTaskViewModel searchTaskViewModel)
+        {
+            var query = db.Tasks.AsQueryable();
+            if (searchTaskViewModel.TaskCategoryId != null)
+            {
+                query = query.Where(t => t.Category.Id == searchTaskViewModel.TaskCategoryId);
+            }
+
+            if (!string.IsNullOrEmpty(searchTaskViewModel.Title))
+            {
+                query = query.Where(t => t.Title.Contains(searchTaskViewModel.Title));
+            }
+
+            if (!string.IsNullOrEmpty(searchTaskViewModel.Detail))
+            {
+                query = query.Where(t => t.Detail.Contains(searchTaskViewModel.Detail));
+            }
+
+            if (searchTaskViewModel.DueDateFrom.HasValue)
+            {
+                query = query.Where(t => t.DueDate >= searchTaskViewModel.DueDateFrom.Value.DateTime);
+            }
+
+            if (searchTaskViewModel.DueDateTo.HasValue)
+            {
+                query = query.Where(t => t.DueDate <= searchTaskViewModel.DueDateTo.Value.DateTime);
+            }
+
+            if (searchTaskViewModel.IsStarted.HasValue)
+            {
+                query = query.Where(t => t.IsStarted == searchTaskViewModel.IsStarted.Value);
+            }
+
+            if (searchTaskViewModel.IsCompleted.HasValue)
+            {
+                query = query.Where(t => t.IsCompleted == searchTaskViewModel.IsCompleted.Value);
+            }
+
+            return query;
         }
 
         /// <summary>
