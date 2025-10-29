@@ -56,7 +56,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.IsCompleted, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.IsCompleted, "完了ステータスで絞り込む", new { @class = "form-control" })
+            @Html.EnumDropDownListFor(model => model.IsCompleted, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">

@@ -90,9 +90,10 @@ namespace todo_app.Controllers
                 query = query.Where(t => t.IsStarted == isStarted);
             }
 
-            if (searchTaskViewModel.IsCompleted.HasValue)
+            if (searchTaskViewModel.IsCompleted != IsCompletedSearchType.未設定)
             {
-                query = query.Where(t => t.IsCompleted == searchTaskViewModel.IsCompleted.Value);
+                var isCompleted = searchTaskViewModel.IsCompleted == IsCompletedSearchType.完了済み;
+                query = query.Where(t => t.IsCompleted == isCompleted);
             }
 
             return query;
