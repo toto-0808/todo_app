@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -34,13 +35,17 @@ namespace todo_app.ViewModels
         /// 期日範囲（開始日）
         /// </summary>
         [DisplayName("期限日の範囲（開始日）")]
-        public DateTimeOffset? DueDateFrom { get; set; } = null;
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime? DueDateFrom { get; set; } = null;
 
         /// <summary>
         /// 期日範囲（修了日）
         /// </summary>
         [DisplayName("期限日の範囲（修了日）")]
-        public DateTimeOffset? DueDateTo { get; set; } = null;
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime? DueDateTo { get; set; } = null;
 
         /// <summary>
         /// 着手済みか
