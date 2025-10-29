@@ -84,9 +84,10 @@ namespace todo_app.Controllers
                 query = query.Where(t => t.DueDate <= searchTaskViewModel.DueDateTo.Value.DateTime);
             }
 
-            if (searchTaskViewModel.IsStarted.HasValue)
+            if (searchTaskViewModel.IsStarted != IsStartedSearchType.未設定)
             {
-                query = query.Where(t => t.IsStarted == searchTaskViewModel.IsStarted.Value);
+                var isStarted = searchTaskViewModel.IsStarted == IsStartedSearchType.着手済み;
+                query = query.Where(t => t.IsStarted == isStarted);
             }
 
             if (searchTaskViewModel.IsCompleted.HasValue)

@@ -45,9 +45,8 @@ namespace todo_app.ViewModels
         /// <summary>
         /// 着手済みか
         /// </summary>
-        /// Toso:選択肢を「未着手」「着手済み」「指定なし」としたい
         [DisplayName("着手ステータス")]
-        public bool? IsStarted { get; set; } = null;
+        public IsStartedSearchType IsStarted { get; set; } = IsStartedSearchType.未設定;
 
         /// <summary>
         /// 完了済みか
@@ -66,5 +65,15 @@ namespace todo_app.ViewModels
         /// </summary>
         [DisplayName("カテゴリ")]
         public List<SelectListItem> TaskCategoryList { get; set; } = new List<SelectListItem>();
+    }
+
+    /// <summary>
+    /// 着手ステータス検索区分
+    /// </summary>
+    public enum IsStartedSearchType : byte
+    {
+        未設定 = 0,
+        未着手 = 1,
+        着手済み = 2
     }
 }
