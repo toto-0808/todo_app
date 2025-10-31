@@ -24,55 +24,59 @@
         <div id="searchDetails" class="accordion-collapse collapse show" data-bs-parent="#search">
             <div class="accordion-body">
 
-                @using (Html.BeginForm("Index", "Tasks", FormMethod.Get))
+
+                @using (Html.BeginForm(
+                    "Index",
+                    "Tasks",
+                    FormMethod.Get,
+                    new { id = "search_form" }))
                 {
                     @Html.AntiForgeryToken()
                     <div class="form-horizontal">
                         <div class="form-group">
                             @Html.LabelFor(model => model.TaskCategoryList, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.DropDownListFor(model => model.TaskCategoryId, Model.TaskCategoryList, "カテゴリを絞り込む", new { @class = "form-control" })
+                                @Html.DropDownListFor(model => model.TaskCategoryId, Model.TaskCategoryList, "カテゴリを絞り込む", new { @class = "form-control", id = "search_task_category_id" })
                             </div>
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.Title, new { @class = "form-control", placeholder = "文字列検索" })
+                                @Html.TextBoxFor(model => model.Title, new { @class = "form-control", placeholder = "文字列検索", id = "search_title" })
                             </div>
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.Detail, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.Detail, new { @class = "form-control", placeholder = "文字列検索" })
+                                @Html.TextBoxFor(model => model.Detail, new { @class = "form-control", placeholder = "文字列検索", id = "search_detail" })
                             </div>
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.DueDateFrom, htmlAttributes: new { @class = "control-label col-md-2" })
-                            @Html.LabelFor(model => model.DueDateTo, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.LabelFor(model => model.DueDateFrom, htmlAttributes: new { @class = "control-label col-md-2"})
+                            @Html.LabelFor(model => model.DueDateTo, htmlAttributes: new { @class = "control-label col-md-2"})
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.DueDateFrom, "期限日Fromで絞り込む", new { @class = "form-control" })
-                                ～　
-                                @Html.EditorFor(model => model.DueDateTo, "期限日Toで絞り込む", new { @class = "form-control" })
+                                @Html.EditorFor(model => model.DueDateFrom, "期限日Fromで絞り込む", new { @class = "form-control", id = "search_due_date_from" })
+                                　　～　　
+                                @Html.EditorFor(model => model.DueDateTo, "期限日Toで絞り込む", new { @class = "form-control", id = "search_due_date_to" })
                             </div>
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.IsStarted, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.EnumDropDownListFor(model => model.IsStarted, new { @class = "form-control" })
+                                @Html.EnumDropDownListFor(model => model.IsStarted, new { @class = "form-control", id = "search_is_started" })
                             </div>
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.IsCompleted, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.EnumDropDownListFor(model => model.IsCompleted, new { @class = "form-control" })
+                                @Html.EnumDropDownListFor(model => model.IsCompleted, new { @class = "form-control", id = "search_is_completed" })
                             </div>
                         </div>
                         <br />
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
                                 <input type="submit" value="Search" class="btn btn-default btn-outline-primary" />
-                                @*Todo:クリアボタンを実装する*@
-                                @*<input type="button" value="Clear" class="btn btn-default btn-outline-secondary" id="clear" />*@
+                                <button type="button" onclick="resetForm()" class="btn btn-default btn-outline-secondary">Reset</button>
                             </div>
                         </div>
                     </div>
@@ -146,3 +150,17 @@
     }
 
 </table>
+
+<script>
+    // 検索フォームリセット処理
+    function resetForm() {
+        console.log("検索初期化呼び出し");
+        document.getElementById('search_task_category_id').value = '';
+        document.getElementById('search_title').value = '';
+        document.getElementById('search_detail').value = '';
+        document.getElementById('DueDateFrom').value = '';
+        document.getElementById('DueDateTo').value = '';
+        document.getElementById('search_is_started').value = 0;
+        document.getElementById('search_is_completed').value = 0;
+    }
+</script>
