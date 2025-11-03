@@ -4,7 +4,7 @@
 
 ## 対応順序
 
-1. プロジェクトを細分化する
+1. プロジェクトを細分化する⇒完了
 1. ValueObjectを作成
 1. ModelをEntityに変更
 1. Repositoryパターンを適用する
