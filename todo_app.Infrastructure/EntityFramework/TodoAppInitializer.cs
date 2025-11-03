@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
+using todo_app.Domain.Entities;
 
-namespace todo_app.Models
+namespace todo_app.Infrastructure.EntityFramework
 {
     /// <summary>
     /// DB初期化クラス

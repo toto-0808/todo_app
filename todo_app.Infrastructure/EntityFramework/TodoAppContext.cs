@@ -1,6 +1,7 @@
-﻿using System.Data.Entity;
+﻿using todo_app.Domain.Entities;
+using System.Data.Entity;
 
-namespace todo_app.Models
+namespace todo_app.Infrastructure.EntityFramework
 {
     /// <summary>
     /// TodoAppDBコンテキスト

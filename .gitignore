@@ -365,3 +365,6 @@ FodyWeavers.xsd
 /todo_app/Views/Web.config
 /todo_app/Web.Debug.config
 /todo_app/Web.Release.config
+/todo_app.Infrastructure/Web.config
+/todo_app.Infrastructure/Web.Debug.config
+/todo_app.Infrastructure/Web.Release.config

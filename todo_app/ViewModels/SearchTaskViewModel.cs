@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using todo_app.Models;
+using todo_app.Domain.Entities;
 
 namespace todo_app.ViewModels
 {
