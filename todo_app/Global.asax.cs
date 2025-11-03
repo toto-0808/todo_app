@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using todo_app.Models;
+using todo_app.Infrastructure.EntityFramework;
 
 namespace todo_app
 {

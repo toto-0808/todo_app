@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace todo_app.Models
+namespace todo_app.Domain.Entities
 {
     /// <summary>
     /// タスクカテゴリ

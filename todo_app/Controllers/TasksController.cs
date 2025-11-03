@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using todo_app.Models;
+using todo_app.Infrastructure.EntityFramework;
 using todo_app.ViewModels;
+using todo_app.Domain.Entities;
 
 namespace todo_app.Controllers
 {

@@ -133,10 +133,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Task.cs" />
-    <Compile Include="Models\TaskCategory.cs" />
-    <Compile Include="Models\TodoAppContext.cs" />
-    <Compile Include="Models\TodoAppInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\SearchTaskViewModel.cs" />
     <Compile Include="ViewModels\TaskViewModel.cs" />
@@ -167,6 +163,7 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="0_doc\refactor.md" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -235,6 +232,16 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\todo_app.Domain\todo_app.Domain.csproj">
+      <Project>{e74ca9a9-e2b5-46a1-9a7d-f45f97e8f8cd}</Project>
+      <Name>todo_app.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\todo_app.Infrastructure\todo_app.Infrastructure.csproj">
+      <Project>{413b229c-8bee-4f80-85b2-8e52a4c04879}</Project>
+      <Name>todo_app.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

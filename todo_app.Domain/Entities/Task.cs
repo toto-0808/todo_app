@@ -2,13 +2,17 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace todo_app.Models
+namespace todo_app.Domain.Entities
 {
     /// <summary>
     /// タスク
     /// </summary>
     public class Task
     {
+        // todo: 完全コンストラクタにする
+        // ValueObjectをのせる
+        // setの削除
+
         /// <summary>
         /// ID
         /// </summary>
