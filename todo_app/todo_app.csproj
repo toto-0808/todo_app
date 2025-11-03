@@ -237,6 +237,16 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\todo_app.Domain\todo_app.Domain.csproj">
+      <Project>{e74ca9a9-e2b5-46a1-9a7d-f45f97e8f8cd}</Project>
+      <Name>todo_app.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\todo_app.Infrastructure\todo_app.Infrastructure.csproj">
+      <Project>{413b229c-8bee-4f80-85b2-8e52a4c04879}</Project>
+      <Name>todo_app.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
